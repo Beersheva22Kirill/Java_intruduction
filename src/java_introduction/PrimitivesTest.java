@@ -43,6 +43,8 @@ class PrimitivesTest {
 
 //		int num = 345;
 
+//     Цикл разбора числа на составляющие цифры		
+		
 //		for (int i = 1; num > 0; i++) {
 //
 //			int difer = num % (int) Math.pow(10, i);
