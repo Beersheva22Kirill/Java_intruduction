@@ -87,6 +87,7 @@ void getBitValueTest() {
 	assertEquals(0, BitOperation.getBitValue(number, 11));
 	assertEquals(0, BitOperation.getBitValue(number, 1));
 	assertEquals(1, BitOperation.getBitValue(number, 2));
+	assertEquals(-1, BitOperation.getBitValue(number, -2));
 }
 
 @Test
