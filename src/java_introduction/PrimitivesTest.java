@@ -70,7 +70,7 @@ class PrimitivesTest {
 		  return number1; 
 		  }
 	 
-	  private int getSecondDigit(int number) {
+	  private int getSecondDigit(int number) { 
 		
 		return number/10 % 10;
 	  }
