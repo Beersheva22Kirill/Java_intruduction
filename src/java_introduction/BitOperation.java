@@ -22,6 +22,11 @@ public class BitOperation {
 	 * @return value of bit with number nBit
 	 */
 	
+private static boolean checkNbit(int nBit) {
+		
+		return nBit < 64 && nBit > -1;
+}
+	
 	static public int getBitValue (long number, int nBit) {
 		int res = -1;
 		if (checkNbit(nBit)) {
@@ -31,15 +36,10 @@ public class BitOperation {
 			} else {
 				res = 1;
 			}
-		}
-		
-		
+		}	
 			return res;	
 		}	
-	private static boolean checkNbit(int nBit) {
 		
-		return nBit < 64 && nBit > -1;
-	}	
 		
 		/**
 		 * 
@@ -50,10 +50,17 @@ public class BitOperation {
 		 */
 		
 		static public long setBitValue(long number, int nBit, boolean value) {
-			
-			return Value;
-			
-		}		
+			if (!value) {
+			if (checkNbit(nBit)) {
+				long mask = 1 << nBit; //all bits re 0 exept bit with number nBit
+				if (getBitValue(number, nBit) == 1) {
+					number = number^mask;
+				}
+			}
+			}
+			return number;	
+			}
+					
 		
 		/**
 		 * 
@@ -63,8 +70,12 @@ public class BitOperation {
 		 * @return
 		 */
 		static public long revertBitValue(long number, int  nBit) {
+			if (checkNbit(nBit)) {
+				long mask = 1 << nBit; //all bits re 0 exept bit with number nBit
+				number = number^mask;
+			}
 		
-			return -1;	
+			return number;	
 		}
 		
 }
