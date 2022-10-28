@@ -8,12 +8,6 @@ package java_introduction;
 
 public class BitOperation {
 	
-//	@param number - any number
-//	@param nBit - number of bit
-//	@return value of bit with number nBit
-//  @param value true for 1, false for 0
-//	@return number in witch value of			
-		
 	
 	/**
 	 * 
@@ -43,9 +37,9 @@ private static boolean checkNbit(int nBit) {
 		
 		/**
 		 * 
-		 * @param number
-		 * @param nBit
-		 * @param Value
+		 * @param number - any number
+		 * @param nBit - number of bit
+		 * @param Value - flag
 		 * @return
 		 */
 		
@@ -65,8 +59,7 @@ private static boolean checkNbit(int nBit) {
 		/**
 		 * 
 		 * @param number - any number
-		 * @param nBit - 
-		 * @param value
+		 * @param nBit - number of bit 
 		 * @return
 		 */
 		static public long revertBitValue(long number, int  nBit) {
