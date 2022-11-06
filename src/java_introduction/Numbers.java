@@ -21,7 +21,7 @@ public class Numbers {
 		boolean res = false;
 		if ((number >= 100000) && (number <= 999999)) { 
 			int digitRight = number % 1000;
-			int digitLeft = (number/1000) % 1000;
+			int digitLeft = (number/1000);
 			if (sumDigit(digitLeft) == sumDigit(digitRight)) {
 				res = true;
 				System.out.println("Number " + number + " is happy number");
