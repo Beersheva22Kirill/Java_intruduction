@@ -28,7 +28,6 @@ public class SportLotoApp {
 		
 		System.out.println();
 		System.out.println(iterCounter);
-		System.out.println(indicatNumber);
 		System.out.println(Long.toBinaryString(indicatNumber));
 
 		
