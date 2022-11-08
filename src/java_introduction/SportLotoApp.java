@@ -10,12 +10,14 @@ public class SportLotoApp {
 	 * numbers can not be repeated in a sequence of 6 random numbers
 	 * no additional collections / arrays
 	 */
-	public static void main(String[] args) {
+ 
+
+	public static void main(String[] args) {		
 		
 		int  dif = 0, i = 0;
 		int iterCounter = 0; //iteration counter
-		long indicatNumber = 0; 
-		
+		long indicatNumber = 0l; 
+		System.out.println(Long.toBinaryString(indicatNumber));
 		while (i < 6) {
 			dif = getRandom(1, 49);
 			if (BitOperation.getBitValue(indicatNumber, dif) == 0) {
@@ -35,8 +37,8 @@ public class SportLotoApp {
 	}
 	
 	public static int getRandom(int min, int max) {
-		
-		return (int) (min + Math.random() * (max - min +1));
+
+			return (int) (min + Math.random() * (max - min +1));
 	}
 
 }
