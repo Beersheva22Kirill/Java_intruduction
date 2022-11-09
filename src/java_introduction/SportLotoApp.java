@@ -1,6 +1,6 @@
 package java_introduction;
 
-import org.w3c.dom.css.Counter;
+//import org.w3c.dom.css.Counter;
 
 public class SportLotoApp {
 
@@ -12,14 +12,20 @@ public class SportLotoApp {
 	 */
  
 
-	public static void main(String[] args) {		
+	public static void main(String[] args) {	
 		
+		int ar[] = {1,2,3};
+		int ar1[] = new int[3];
+		final int ar2[] = new int[3];
+		
+		for (int i = 0; i < 3; i++) {
+			
+		}		
 		int  dif = 0, i = 0;
 		int iterCounter = 0; //iteration counter
 		long indicatNumber = 0l; 
-		System.out.println(Long.toBinaryString(indicatNumber));
 		while (i < 6) {
-			dif = getRandom(1, 49);
+			dif = Numbers.getRandom(1, 49);
 			if (BitOperation.getBitValue(indicatNumber, dif) == 0) {
 				System.out.print(dif + " ");
 				i++;	
@@ -27,18 +33,10 @@ public class SportLotoApp {
 			}
 			iterCounter++;	
 		}
-		
-		System.out.println();
-		System.out.println(iterCounter);
-		System.out.println(indicatNumber);
-		System.out.println(Long.toBinaryString(indicatNumber));
 
 		
 	}
 	
-	public static int getRandom(int min, int max) {
 
-			return (int) (min + Math.random() * (max - min +1));
-	}
 
 }

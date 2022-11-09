@@ -38,104 +38,136 @@ class PrimitivesTest {
 		assertEquals(1, a % 3);
 
 		int number = 123;
-		
+
 		System.out.println(number);
 
-//		int num = 345;
-
-//     Цикл разбора числа на составляющие цифры		
-		
-//		for (int i = 1; num > 0; i++) {
-//
-//			int difer = num % (int) Math.pow(10, i);
-//
-//			System.out.println(difer / (int) Math.pow(10, i - 1));
-//
-//			num = num - difer;
-//
-//		}
-
-		 assertEquals(2, getSecondDigit(number));
-		 assertEquals(1, getFirstDigit(number));
-		 assertEquals(3, getThirdDigit(number));
+		assertEquals(2, getSecondDigit(number));
+		assertEquals(1, getFirstDigit(number));
+		assertEquals(3, getThirdDigit(number));
 
 	}
 
-	
-	  private int getThirdDigit(int number) {
-		  
-		  int number1 = number % 10;
-		  System.out.println(number1);
-		  
-		  return number1; 
-		  }
-	 
-	  private int getSecondDigit(int number) { 
-		
-		return number/10 % 10;
-	  }
-	
-	  private int getFirstDigit(int number) {
-		  
+	private int getThirdDigit(int number) {
+
+		int number1 = number % 10;
+		System.out.println(number1);
+
+		return number1;
+	}
+
+	private int getSecondDigit(int number) {
+
+		return number / 10 % 10;
+	}
+
+	private int getFirstDigit(int number) {
+
 		return number / 100 % 10;
 	}
 
-@Test
-void getBitValueTest() {
-	long number = 0x3ab7f5; //0011 1010 1011 0111 1111 0101
-							//0011 1010 1011 0111 1101 0101
-							//0011 1010 1011 0111 1111 0101
-	assertEquals(1, BitOperation.getBitValue(number, 5));
-	assertEquals(0, BitOperation.getBitValue(number, 11));
-	assertEquals(0, BitOperation.getBitValue(number, 1));
-	assertEquals(1, BitOperation.getBitValue(number, 2));
-	assertEquals(-1, BitOperation.getBitValue(number, -2));
-		
-	number = -1;
-	assertEquals(1, BitOperation.getBitValue(number, 63));
-}
+	@Test
+	void getBitValueTest() {
+		long number = 0x3ab7f5; // 0011 1010 1011 0111 1111 0101
+								// 0011 1010 1011 0111 1101 0101
+								// 0011 1010 1011 0111 1111 0101
+		assertEquals(1, BitOperation.getBitValue(number, 5));
+		assertEquals(0, BitOperation.getBitValue(number, 11));
+		assertEquals(0, BitOperation.getBitValue(number, 1));
+		assertEquals(1, BitOperation.getBitValue(number, 2));
+		assertEquals(-1, BitOperation.getBitValue(number, -2));
 
-@Test
-void setBitValueTest() {
-	long number = 0x3ab7f5; //0011 1010 1011 0111 1111 0101
-							//0011 1010 1011 0111 1111 0101
-	assertEquals(0x3ab7d5, BitOperation.setBitValue(number, 5, false));
-	assertEquals(0x3ab7f5, BitOperation.setBitValue(number, 5, true));
+		number = -1;
+		assertEquals(1, BitOperation.getBitValue(number, 63));
+	}
+
+	@Test
+	void setBitValueTest() {
+		long number = 0x3ab7f5; // 0011 1010 1011 0111 1111 0101
+								// 0011 1010 1011 0111 1111 0101
+		assertEquals(0x3ab7d5, BitOperation.setBitValue(number, 5, false));
+		assertEquals(0x3ab7f5, BitOperation.setBitValue(number, 5, true));
+
+	}
+
+	@Test
+	void revertBitValueTest() {
+		long number = 0x3ab7f5; // 0011 1010 1011 0111 1111 0101
+		assertEquals(0x3ab7d5, BitOperation.invertBitValue(number, 5));
+		number = BitOperation.invertBitValue(number, 62); // 63 not work
+		assertEquals(0, BitOperation.getBitValue(number, 63));
+
+	}
+
+	@Test
+	void digitsNumberTest() {
+		int number = 5673;
+		assertEquals(4, Numbers.getNdigits(number));
+	}
+
+	@Test
+	void ledingZerosTest() {
+		long number = 0x3ab7f0; // 0011 1010 1011 0111 1111 0000
+		assertEquals(42, BitOperation.leadingZeros(number));
+	}
+
+	@Test
+	void onesInNumberTest() {
+		int number = 0x3ab7f0; // 0011 1010 1011 0111 1111 0000
+		assertEquals(14, BitOperation.onesInNumber(number));
+	}
+
+	@Test
+	@Disabled
+	void isHappyNumberTest() {
+		int numHappy = 627906;
+		int numNotHappy = 543986;
+		assertEquals(true, Numbers.isHappyNumber(numHappy));
+		assertEquals(false, Numbers.isHappyNumber(numNotHappy));
+		assertFalse(Numbers.isHappyNumber(numNotHappy));
+		assertTrue(Numbers.isHappyNumber(numHappy));
+	}
 	
-
-}
-
-@Test
-void revertBitValueTest() {
-	long number = 0x3ab7f5; //0011 1010 1011 0111 1111 0101
-	assertEquals(0x3ab7d5, BitOperation.invertBitValue(number, 5));
-	number = BitOperation.invertBitValue(number, 62); // 63 not work
-	assertEquals(0, BitOperation.getBitValue(number, 63));
-
-
-}
-
-@Test
-void digitsNumberTest() {
-	int number = 5673;
-	assertEquals(4, Numbers.getNDigits(number));
-}
-@Test
-void ledingZerosTest() {
-	long number = 0x3ab7f0; //0011 1010 1011 0111 1111 0000
-	assertEquals(42, BitOperation.leadingZeros(number));
-}
-
-@Test 
-void onesInNumberTest() {
-	int number = 0x3ab7f0; //0011 1010 1011 0111 1111 0000
-	assertEquals(14, BitOperation.onesInNumber(number));
-}
-@Test 
-void isHappyNumberTest() {
-	int numHappy = 627906;
-	int numNotHappy = 543986;
-	assertEquals(true, Numbers.isHappyNumber(numHappy));
-	assertEquals(false, Numbers.isHappyNumber(numNotHappy));
-}
+	@Test
+	@Disabled
+	void getDigitsTest() {
+		int expected[] = {1,2,3,4};
+		Numbers.getDigits(1234);
+		assertArrayEquals(expected, Numbers.getDigits(1234));
+	}
+	
+	@Test
+	void getNumberFromDigitsTest() {
+		int expectedNumber = 1234;
+		assertEquals(expectedNumber, Numbers.getNumberFromDigits(new int []{1,2,3,4}));
+	}
+	@Test
+	void verifyTest( ) {
+		assertEquals(true, IsraelIdentity.verify(346872658));
+	}
+	@Test
+	void generateRandomIdTest() {
+		assertEquals(9, Numbers.getNdigits(IsraelIdentity.generateRandomId()));
+	}
+	
+	@Test 
+	void addsNumderTest() {
+		int originalArray[] = {1,2,3,4};
+		int expected[] = {1,2,3,4,5};
+		assertArrayEquals(expected, MyArrays.addsNumder(originalArray, 5));
+	}
+	
+	@Test
+	void removeNumber() {
+		int originalArray[] = {1,2,3,4,5,9,12,4,6,8,34,27,43};
+		int expected[] = {1,2,3,4,5,9,4,6,8,34,27,43};
+		int expectedFalse[] = {1,2,3,4,5,9,12,4,6,8,34,27,43};
+		assertArrayEquals(expected, MyArrays.removeNumber(originalArray, 6));
+		assertArrayEquals(expectedFalse, MyArrays.removeNumber(originalArray, 16));
+	}
+	@Test
+	void insertSorted() {
+		int originalArray[] = {1,2,3,4,5,6,7,8};
+		int expected[] = {1,2,3,4,4,5,6,7,8};
+		assertArrayEquals(expected, MyArrays.insertSorted(originalArray, 4));
+	}
 }
