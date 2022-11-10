@@ -23,7 +23,7 @@ public class MyArrays {
 	 * if index does not exist in a given array it return the same array  
 	 */
 	public static int[] removeNumber(int [] array, int index) {
-		// use standart class System, method arraycopy
+		// use standard class System, method arraycopy
 		int NumDigits = index >= 0 && index < array.length ? array.length - 1 : array.length;
 		int[] res = new int[NumDigits];
 		
@@ -52,8 +52,7 @@ public class MyArrays {
 		
 		if (posNumber < 0) {
 			posNumber = posNumber * (-1) - 1;  
-		}
-		
+		}		
 			System.arraycopy(arraySorted, 0, res, 0, posNumber);
 				res[posNumber] = number;
 			System.arraycopy(arraySorted, posNumber, res, posNumber + 1, arraySorted.length - posNumber);	

@@ -157,7 +157,7 @@ class PrimitivesTest {
 	}
 	
 	@Test
-	void removeNumber() {
+	void removeNumbertest() {
 		int originalArray[] = {1,2,3,4,5,9,12,4,6,8,34,27,43};
 		int expected[] = {1,2,3,4,5,9,4,6,8,34,27,43};
 		int expectedFalse[] = {1,2,3,4,5,9,12,4,6,8,34,27,43};
@@ -165,7 +165,7 @@ class PrimitivesTest {
 		assertArrayEquals(expectedFalse, MyArrays.removeNumber(originalArray, 16));
 	}
 	@Test
-	void insertSorted() {
+	void insertSortedTest() {
 		int originalArray[] = {1,2,3,4,5,6,7,8};
 		int expected[] = {1,2,3,4,4,5,6,7,8};
 		assertArrayEquals(expected, MyArrays.insertSorted(originalArray, 4));
