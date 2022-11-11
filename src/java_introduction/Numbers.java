@@ -68,14 +68,7 @@ public class Numbers {
 		// TODO getUniqRandom
 		return (int) (min + Math.random() * (max - min + 1));
 	}
-
-
-// TODO
-//	public static int getControlSum(int number) {	
-//		
-//		return sumEventIndexes(number) + sumOddIndexes(number);
-//	}
-//	
+	
 
 		
 }

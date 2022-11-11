@@ -23,15 +23,16 @@ public class MyArrays {
 	 * if index does not exist in a given array it return the same array  
 	 */
 	public static int[] removeNumber(int [] array, int index) {
-		// use standard class System, method arraycopy
+		
 		int NumDigits = index >= 0 && index < array.length ? array.length - 1 : array.length;
-		int[] res = new int[NumDigits];		
+		int[] res = new int[NumDigits];	
+		
 		if (NumDigits == (array.length - 1) ) {	
 			System.arraycopy(array, 0, res, 0, index);
 			System.arraycopy(array, index + 1, res, index, array.length - index - 1);
-		} else {
+			} else {
 			System.arraycopy(array, 0, res, 0, array.length );
-		}
+			}
 
 		return res;
 		
@@ -43,8 +44,6 @@ public class MyArrays {
 	 * @return new array with inserted number at index for keeping array sorted
 	 */
 	public static int [] insertSorted(int[] arraySorted, int number) {
-		//use the method binarySearch of the standard class Arrays
-		//use the method arraycopy of the standard class System
 		int[] res = new int[arraySorted.length + 1];
 		
 		int posNumber = Arrays.binarySearch(arraySorted, number);		
@@ -53,14 +52,15 @@ public class MyArrays {
 			posNumber = posNumber * (-1) - 1;  
 		}		
 			System.arraycopy(arraySorted, 0, res, 0, posNumber);
-				res[posNumber] = number;
+			res[posNumber] = number;
 			System.arraycopy(arraySorted, posNumber, res, posNumber + 1, arraySorted.length - posNumber);	
 		
-		return res; //insertAtIndex(arraySorted,number,posNumber);
+		return res;
 	}
 	
 	private static int[] insertAtIndex(int[] array, int number, int index) {
 		int res[] = new int[array.length];
+		
 		System.arraycopy(array, 0, res, 0, index);
 		res[index] = number;
 		System.arraycopy(array, index, res, index + 1, array.length - index);
@@ -83,25 +83,24 @@ public class MyArrays {
 		
 		boolean flag = true;
 		
-while (flag == true) {	
-		middle = indexRight / 2;
-		while (indexLeft <= indexRight && arraySorted[middle] != number ) {
+		while (flag == true) {	
+			middle = indexRight / 2;
+			while (indexLeft <= indexRight && arraySorted[middle] != number ) {
 			if (number < arraySorted[middle]) {
 				indexRight = middle - 1;
-			} else {
-				indexLeft = middle + 1;
+				} else {
+					indexLeft = middle + 1;
+				}
+				middle = (indexLeft + indexRight) / 2;
 			}
-			middle = (indexLeft + indexRight) / 2;
-		}
 		
-		if (elementBefore(arraySorted, middle) == true) {
-			indexRight = middle - 1;
-		} else {
-			flag = false;
-		}
-			
+			if (elementBefore(arraySorted, middle) == true) {
+				indexRight = middle - 1;
+				} else {
+					flag = false;
+				}
 		
-	}
+		}
 		return indexLeft>indexRight ? -1 : middle;
 	}
 	
@@ -140,11 +139,13 @@ while (flag == true) {
 	}
 
 	public static void printArr(int [] array) {
-			System.out.println();
+		System.out.println();
+		
 		for (int i = 0; i < array.length; i++) {			
 			System.out.print(array[i]);
 		}
-			System.out.println();
+		
+		System.out.println();
 	}
 	/**
 	 * 
@@ -167,6 +168,7 @@ while (flag == true) {
 	public static int sumOddIndexes(int[] array) {	
 		int res = 0;
 		int digit = 0;
+		
 		for (int i = 1; i < array.length; i += 2 ) {
 			digit = array[i] * 2;
 			if (digit > 9) {

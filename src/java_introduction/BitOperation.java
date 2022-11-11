@@ -46,19 +46,7 @@ private static boolean checkNbit(int nBit) {
 		 * @return
 		 */
 		
-		static public long setBitValue(long number, int nBit, boolean value) {
-//			if (!value) {
-//			if (checkNbit(nBit)) {
-//				long mask = 1 << nBit; //all bits re 0 exept bit with number nBit
-//					System.out.println(Long.toBinaryString(mask));
-//				if (getBitValue(number, nBit) == 1) {
-//					System.out.println(Long.toBinaryString(number));
-//					number = number^mask;
-//					System.out.println(Long.toBinaryString(number));
-//				}
-//			}
-//			}
-			
+		static public long setBitValue(long number, int nBit, boolean value) {			
 			
 			long res = -1;
 			
