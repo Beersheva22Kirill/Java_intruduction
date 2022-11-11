@@ -64,28 +64,18 @@ public class Numbers {
 		return res;
 	}
 
-	public static int getRandom(int min, int max) {
+	public static int getRandom(long min, long max) {
 		// TODO getUniqRandom
 		return (int) (min + Math.random() * (max - min + 1));
 	}
 
-	public static int getControlSumIsr(int number) {
-		int res = 0;
-		int[] array = Numbers.getDigits(number);
 
-		for (int i = 0; i < array.length; i++) {
+// TODO
+//	public static int getControlSum(int number) {	
+//		
+//		return sumEventIndexes(number) + sumOddIndexes(number);
+//	}
+//	
 
-			if (i % 2 == 0) {
-				res += array[i];
-			} else {
-				int dif = (array[i] * 2);
-				if (dif > 9) {
-					res += Numbers.sumDigit(dif);
-				} else {
-					res += dif;
-				}
-			}
-		}
-		return res;
-	}
+		
 }

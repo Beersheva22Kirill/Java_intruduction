@@ -14,11 +14,19 @@ public class IsraelIdentity {
 	 *         (6 * 2 = 12 => 1 + 2 ) + 7 + 7(8 * 2 = 16 => 7) + 2 = 40 40 % 10 = 0;
 	 */
 public static int iterCounter = 0;
+public static final int N_DIGITS_ID = 9;
+
 	public static boolean verify(int id) {
-		boolean res = false;				
-		if (Numbers.getControlSumIsr(id) % 10 == 0 ) {
-			res = true;
-		}		
+		
+		int [] digits = new int [Numbers.getNdigits(id)];
+		
+		boolean res = false;
+		if (N_DIGITS_ID == digits.length) {
+			if (MyArrays.getControlSum(digits) % 10 == 0 ) {
+				res = true;
+			}	
+		}
+			
 		return res;
 	}
 
@@ -31,27 +39,30 @@ public static int iterCounter = 0;
 		int [] NumberZeut = new int[9];
 		int i = 0, res = 0, dif = 0;
 		int ControlSum = 0;
+		NumberZeut[0] = Numbers.getRandom(1, 9);
+		i++;
 		
-		while (i < 8) {
+		while (i < N_DIGITS_ID - 1) {			
 			dif = Numbers.getRandom(0, 9);					
-			if (i == 0) {
-				if (dif != 0) {
-					NumberZeut[i] = dif;
-					i++;
-				}
-			} else {
 				NumberZeut[i] = dif;				
-				i++;
-			}			
-			iterCounter++;
+				i++;			
+				iterCounter++;
 		}
-		ControlSum = Numbers.getControlSumIsr(Numbers.getNumberFromDigits(NumberZeut));
-		NumberZeut[8] = (((ControlSum/10)+1)*10 - ControlSum); 				
+		ControlSum = MyArrays.getControlSum(NumberZeut);
+		NumberZeut[8] = getLastDigit(ControlSum);
 		res = Numbers.getNumberFromDigits(NumberZeut);
 
-		//System.out.println(iterCounter);		
-		
 		return res;
 	}
 
+	
+	public static int getLastDigit(int controlSum) {
+		
+		int rem = controlSum % 10;
+		int res = 0;
+		if (rem != 0) {
+			res = 10 - rem;
+		}
+		return res;
+	}
 }
