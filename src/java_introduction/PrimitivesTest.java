@@ -128,14 +128,6 @@ class PrimitivesTest {
 	}
 
 	@Test
-	@Disabled
-	void getDigitsTest() {
-		int expected[] = { 1, 2, 3, 4 };
-		Numbers.getDigits(1234);
-		assertArrayEquals(expected, Numbers.getDigits(1234));
-	}
-
-	@Test
 	void verifyTest() {
 		assertEquals(true, IsraelIdentity.verify(346872658));
 	}

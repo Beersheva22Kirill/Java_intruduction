@@ -103,5 +103,12 @@ public class ArrayTest {
 		int expected[] = {1,2,3,4,4,5,6,7,8};
 		assertArrayEquals(expected, MyArrays.insertSorted(originalArray, 4));
 	}
+	
+	@Test
+	void getDigitsTest() {
+		int expected[] = { 1, 2, 3, 4 };
+		Numbers.getDigits(1234);
+		assertArrayEquals(expected, Numbers.getDigits(1234));
+	}
 
 }
