@@ -1,6 +1,7 @@
 package java_introduction;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
 public class MyArrays {
 	/**
@@ -79,12 +80,13 @@ public class MyArrays {
 	public static int binarySearchFirstIndex(int arraySorted[], int number) {
 		
 		int indexLeft = 0, indexRight = arraySorted.length - 1;
-		int middle = 0;
+		int middle = 0, expectedIndex = 0;
 		
 		boolean flag = true;
 		
 		while (flag == true) {	
 			middle = indexRight / 2;
+			expectedIndex = middle;
 			while (indexLeft <= indexRight && arraySorted[middle] != number ) {
 			if (number < arraySorted[middle]) {
 				indexRight = middle - 1;
@@ -94,55 +96,73 @@ public class MyArrays {
 				middle = (indexLeft + indexRight) / 2;
 			}
 		
-			if (elementBefore(arraySorted, middle) == true) {
+			if (elementBefore(arraySorted, middle) == true && indexLeft<indexRight) {
 				indexRight = middle - 1;
 				} else {
 					flag = false;
 				}
 		
 		}
-		return indexLeft>indexRight ? -1 : middle;
+		return indexLeft>indexRight ? (middle* (-1)) - 1 : middle;
+	}
+	
+	private static boolean elementBefore (int[] array, int index) {
+
+		return array[index] == array[index - 1] ? true : false;		
 	}
 	
 	public static boolean arrOneStepToSort(int array[]) {
-		int counter = 0, i = 0;
-		while (counter < 2 && i < array.length - 1) {
-			if (array[i] > array[i+1]) {
-				counter++;				
-			}
-			i++;
-		}		
-		return counter == 1 ? true : false;
-	}
-	
+		
+		int counter = 0;		
+		int [] arr_sort = new int [array.length];		
+			System.arraycopy(array, 0, arr_sort, 0, array.length);
+		
+				arr_sort = bubleSortArr(arr_sort);
 
-	
+					for(int i = 0; i < array.length; i++) {
+						if (arr_sort[i] != array[i] ){
+							counter++;
+						}		
+					}
+		return counter == 2 ? true : false;
+	}
+
 	public static int[] bubleSortArr(int [] array) {
 		
-		int [] arraySort = array;
-		boolean arrSort = false;
-		while (!arrSort) {
-			arrSort = true;
-			for (int i = 0; i < array.length - 1; i++) {
-				if (array[i] > array[i+1]) {
-					arrSort = false;
-					
-					int tempElement = array[i];
-					arraySort[i] = array[i + 1];
-					arraySort[i + 1] = tempElement;
-				}
+		int [] arraySort = new int [array.length];
+		System.arraycopy(array, 0, arraySort, 0, array.length);
+		
+			while (moveGreaterRight(arraySort) != arraySort) {			
+				arraySort = moveGreaterRight(arraySort);
 			}
 			
-		}
-		printArr(arraySort);
-		return array;
+		return arraySort;					
 	}
+
+	
+	private static int[] moveGreaterRight (int[] array) {
+		boolean flag = false;
+		
+		int [] arr = new int [array.length];
+		System.arraycopy(array, 0, arr, 0, array.length);
+		
+		for (int i = 0; i < arr.length - 1; i++) {
+			if (arr[i] > arr[i + 1]) {
+				flag = true;
+				int temp = arr[i];
+				arr[i] = arr[i + 1];
+				arr[i + 1] = temp;
+			}								
+		}
+		return flag == false ? array : arr ;
+	}
+		
 
 	public static void printArr(int [] array) {
 		System.out.println();
 		
 		for (int i = 0; i < array.length; i++) {			
-			System.out.print(array[i]);
+			System.out.print(array[i] + " ");
 		}
 		
 		System.out.println();
@@ -190,8 +210,5 @@ public class MyArrays {
 	 * @param index
 	 * @return true if the previous element is equal to the current
 	 */
-	public static boolean elementBefore (int[] array, int index) {
 
-		return array[index] == array[index - 1] ? true : false;		
-	}
 }

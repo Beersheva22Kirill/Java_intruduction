@@ -126,82 +126,23 @@ class PrimitivesTest {
 		assertFalse(Numbers.isHappyNumber(numNotHappy));
 		assertTrue(Numbers.isHappyNumber(numHappy));
 	}
-	
+
 	@Test
 	@Disabled
 	void getDigitsTest() {
-		int expected[] = {1,2,3,4};
+		int expected[] = { 1, 2, 3, 4 };
 		Numbers.getDigits(1234);
 		assertArrayEquals(expected, Numbers.getDigits(1234));
 	}
-	
+
 	@Test
-	void getNumberFromDigitsTest() {
-		int expectedNumber = 1234;
-		assertEquals(expectedNumber, Numbers.getNumberFromDigits(new int []{1,2,3,4}));
-	}
-	@Test
-	void verifyTest( ) {
+	void verifyTest() {
 		assertEquals(true, IsraelIdentity.verify(346872658));
 	}
+
 	@Test
 	void generateRandomIdTest() {
 		assertEquals(9, Numbers.getNdigits(IsraelIdentity.generateRandomId()));
 	}
-	
-	@Test 
-	void addsNumderTest() {
-		int originalArray[] = {1,2,3,4};
-		int expected[] = {1,2,3,4,5};
-		assertArrayEquals(expected, MyArrays.addsNumder(originalArray, 5));
-	}
-	
-	@Test
-	void removeNumbertest() {
-		int originalArray[] = {1,2,3,4,5,9,12,4,6,8,34,27,43};
-		int expected[] = {1,2,3,4,5,9,4,6,8,34,27,43};
-		int expectedFalse[] = {1,2,3,4,5,9,12,4,6,8,34,27,43};
-		assertArrayEquals(expected, MyArrays.removeNumber(originalArray, 6));
-		assertArrayEquals(new int []{1,2,3,4,5,9,12,4,6,8,34,27}, MyArrays.removeNumber(originalArray, 12));
-		assertArrayEquals(new int []{2,3,4,5,9,12,4,6,8,34,27,43}, MyArrays.removeNumber(originalArray, 0));
-		assertArrayEquals(expectedFalse, MyArrays.removeNumber(originalArray, 16));
-	}
-	@Test
-	void insertSortedTest() {
-		int originalArray[] = {1,2,3,4,5,6,7,8};
-		int expected[] = {1,2,3,4,4,5,6,7,8};
-		assertArrayEquals(expected, MyArrays.insertSorted(originalArray, 4));
-	}
-	
-	@Test 
-	void arrOneStepToSortTest() {
-		
-		assertTrue(MyArrays.arrOneStepToSort(new int []{1,2,3,5,4,9,12,14,16,18,22,27}));
-		assertFalse(MyArrays.arrOneStepToSort(new int []{1,2,3,4,5,9,12,4,6,8,34,27}));
-		assertFalse(MyArrays.arrOneStepToSort(new int []{1,2,3,4,5,9,12,14,16,18,22,27}));
-	}
-	
-	@Test 
-	void bubleSortArrTest() {
-		int expected[] = {1,2,3,4,4,5,6,7,8};
-		assertArrayEquals(expected, MyArrays.bubleSortArr(new int []{1,3,2,4,4,8,7,6,5}));
-	}
-	
-	@Test 
-	void sumEventIndexesTest() {
-		assertEquals(20, MyArrays.sumEventIndexes(new int []{1,2,9,8,6,5,4,3,0}) );
-	}
-	
-	@Test 
-	void sumOddIndexesTest( ) {
-		assertEquals(18, MyArrays.sumOddIndexes(new int []{1,2,9,8,6,5,4,3,0}) );
-	}
-	
-	@Test
-	void binarySearchFirstIndexTest() {
-		assertEquals(4, MyArrays.binarySearchFirstIndex(new int []{1,2,3,4,6,6,6,6,8,9,13,14}, 6) );
-		assertEquals(1, MyArrays.binarySearchFirstIndex(new int []{1,2,2,2,6,6,6,6,8,9,13,14}, 2) );
-		assertEquals(9, MyArrays.binarySearchFirstIndex(new int []{1,2,3,4,4,5,5,6,8,9,9,9}, 9) );
-		assertEquals(4, MyArrays.binarySearchFirstIndex(new int []{1,2,3,4,5,6,6,6,8,9,13,14}, 5) );
-	}
+
 }
