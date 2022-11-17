@@ -9,12 +9,10 @@ public class Matrices {
 					res[i][j] = Numbers.getRandom(minValue, maxValue);
 				}
 			}
-			printMatrix(res);
 		return res;
 	}
 	
 	public static void printMatrix (int [][] matrix) {
-		//TODO
 		int i = 0, j = 0;
 		for(i = 0; i < matrix.length; i++) {
 			System.out.println();
@@ -31,9 +29,7 @@ public class Matrices {
 			for (int j = 0; j < matrix[i].length; j++) {
 				res[j][i] = matrix[i][j];
 			}
-		}
-		//printMatrix(res);
-			
+		}			
 		return res;
 	}
 

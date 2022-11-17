@@ -63,11 +63,11 @@ public class MyArrays {
 
 	private static int[] insertAtIndex(int[] array, int number, int index) {
 		int res[] = new int[array.length];
-
+		
 		System.arraycopy(array, 0, res, 0, index);
 		res[index] = number;
 		System.arraycopy(array, index, res, index + 1, array.length - index);
-
+		
 		return res;
 	}
 
@@ -84,7 +84,6 @@ public class MyArrays {
 		int indexLeft = 0;
 		int indexRight = arraySorted.length - 1;
 		int middle = 0;
-
 		boolean flag = true;
 
 		while (flag == true) {
@@ -97,7 +96,6 @@ public class MyArrays {
 				}
 				middle = (indexLeft + indexRight) / 2;
 			}
-
 			if (elementBefore(arraySorted, middle) == true && indexLeft < indexRight) {
 				indexRight = middle - 1;
 			} else {
@@ -132,7 +130,6 @@ public class MyArrays {
 
 		int[] arraySort = new int[array.length];
 		System.arraycopy(array, 0, arraySort, 0, array.length);
-
 		while (moveGreaterRight(arraySort) != arraySort) {
 			arraySort = moveGreaterRight(arraySort);
 		}
@@ -156,23 +153,19 @@ public class MyArrays {
 		return flag == false ? array : arrayTemp;
 	}
 
-	public static void printArr(int[] array) {
+	public static void printArrToTerminal_Int(int[] array) {
 		System.out.println();
-
 		for (int i = 0; i < array.length; i++) {
 			System.out.print(array[i] + " ");
 		}
-
 		System.out.println();
 	}
-	
-	public static void printArrShort(short[] array) {
-		System.out.println();
 
+	public static void printArrToTerminal_Short(short[] array) {
+		System.out.println();
 		for (int i = 0; i < array.length; i++) {
 			System.out.print(array[i] + " ");
 		}
-
 		System.out.println();
 	}
 
@@ -219,54 +212,25 @@ public class MyArrays {
 	 * @param sum
 	 * @return true if array contains two numbers, sum of which equals a given sum
 	 */
-	public static boolean isSumTwo(short [] array, short sum) {
-		//TODO
+
+	public static boolean isSumTwo(short[] array, short sum) {
+		
 		boolean res = false;
-		int i = 1;
-		short num1 = array[i-1];
-		short num2 = array[i];
-		short elementSum = 0;
-		System.out.print(sum + " summ ");
-		printArrShort(array);
-		
-		System.out.print(" (" + num1 + "," + num2 + ") ");
-		System.out.println();
-		
+		boolean[] Helper = new boolean[sum >= 0 ? sum + 1 : 0x7fff + 1];
+		int i = 0;
+		while (!res && i < array.length) {
 
-		while (i < array.length-1 && !res ) {
-			System.out.println("i:" + i);				
-			if (num1 + num2 != sum) {
-				if (num1 + num2 < sum) {
-					if (num1 < num2 && num1 < array[i + 1] && num1 + array[i + 1] < sum  ) {
-						num1 = array[i + 1];
-					} else if (num2 < num1 && num2 < array[i + 1] && num2 + array[i + 1] < sum) {
-						num2 = array[i + 1];
-					} else if (num1 + array[i + 1] == sum || num2 + array[i+1] == sum ) {
-						res = true;
-					}
-					
-				} else if (num1 + num2 > sum) {
-					if (num1 > num2 && num1 > array[i + 1] && num1 + array[i + 1] > sum) {
-						num1 = array[i + 1];
-					} else if (num2 > num1 && num2 > array[i+1] && num2 + array[i+1] < sum) {
-						num2 = array[i + 1];
-					} else if (num1 + array[i + 1] == sum || num2 + array[i+1] == sum ) {
-						res = true;
-					}
-				} else {
+			short difSum = (short) (sum - array[i]);
+			if (difSum >= 0) {
+				if (Helper[difSum]) {
 					res = true;
+				} else {
+					Helper[array[i]] = true;
 				}
-			} else {
-				res = true;
 			}
-			
-			System.out.print(" (" + num1 + "," + num2 + ") ");
-			System.out.println();
 			i++;
-
 		}
-	return res;	
+		return res;
 	}
-		
 
 }

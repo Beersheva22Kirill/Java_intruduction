@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 class PrimitivesTest {
 
 	@Test
-	@Disabled
 	void dataTypeTest() {
 
 		int b = 10;
@@ -29,7 +28,6 @@ class PrimitivesTest {
 	}
 
 	@Test
-	@Disabled
 	void operatorTest() {
 
 		int a = 10;
@@ -117,7 +115,6 @@ class PrimitivesTest {
 	}
 
 	@Test
-	@Disabled
 	void isHappyNumberTest() {
 		int numHappy = 627906;
 		int numNotHappy = 543986;

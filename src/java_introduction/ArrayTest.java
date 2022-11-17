@@ -8,9 +8,7 @@ import org.junit.jupiter.api.Test;
 public class ArrayTest {
 	
 	@Test
-	void arrOneStepToSortTestTrue() {
-
-		
+	void arrOneStepToSortTestTrue() {		
 		int ar1[] = { 10, 2, 3, 4, 1 };
 		int ar2[] = { 1, 2, 4, 3, 5, 10 };
 		int ar3[] = { 1, 2, 3, 10, 5, 4 };
@@ -32,8 +30,7 @@ public class ArrayTest {
 
 	}
 	@Test
-	void arrOneStepToSortTestFalse() {
-		
+	void arrOneStepToSortTestFalse() {		
 		int ar1[] = { 1, 2, 3, 10, -1, 5, 6 };
 		int ar2[] = { 1, 2, 3, 4, 5, 10 };
 		int ar3[] = { 5, 1, 2, 4, 6, 10 };
@@ -135,13 +132,19 @@ public class ArrayTest {
 		short expected6[] = { 1, 3, 5, 7, 5, 1, 2};
 		short isSum6 = 3;
 		
+		short ar[] = {1, 2, 5, 4, 5, 100, 9};
+		short isSum7 = 101;
+		
 		assertEquals(true, MyArrays.isSumTwo(expected, isSum));
 		assertEquals(true, MyArrays.isSumTwo(expected2, isSum2));
 		assertEquals(true, MyArrays.isSumTwo(expected3, isSum3));
 		assertEquals(true, MyArrays.isSumTwo(expected4, isSum4));
 		assertEquals(true, MyArrays.isSumTwo(expected5, isSum5));
 		assertEquals(true, MyArrays.isSumTwo(expected6, isSum6));
+		assertEquals(true, MyArrays.isSumTwo(ar, isSum7));
+		assertEquals(true, MyArrays.isSumTwo(ar, isSum7));
 	}
+	
 	
 	@Test
 	void isSumTwoTestFalse() {
@@ -156,4 +159,5 @@ public class ArrayTest {
 		assertEquals(false, MyArrays.isSumTwo(expected1, isSum1));
 		assertEquals(false, MyArrays.isSumTwo(expected2, isSum2));
 	}
+	
 }

@@ -24,9 +24,7 @@ public class Numbers {
 			int digitLeft = (number / 1000);
 			if (sumDigit(digitLeft) == sumDigit(digitRight)) {
 				res = true;
-				System.out.println("Number " + number + " is happy number");
 			} else {
-				System.out.println("Number " + number + " is not happy number");
 			}
 		}
 		return res;
