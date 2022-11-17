@@ -26,7 +26,6 @@ public class ObjectsTest {
 		String hello = "hello";
 		char[] helloAr = hello.toCharArray();
 		assertEquals('h', helloAr[0]);
-		System.out.println((int)helloAr[0]);
 		assertEquals(5, hello.length());
 	}
 	
@@ -41,6 +40,7 @@ public class ObjectsTest {
 	void isAnagrammTestTrue () {
 		assertTrue(Strings.isAnagramm("hello", "oellh"));
 		assertTrue(Strings.isAnagramm("hello   987   jhgf", "hfgj   oellh   789"));
+		assertTrue(Strings.isAnagramm("    ", "    "));
 		
 	}
 	
@@ -48,6 +48,8 @@ public class ObjectsTest {
 	void isAnagrammTestFalse () {
 		assertFalse(Strings.isAnagramm("hello", "oellhr"));
 		assertFalse(Strings.isAnagramm("hello   987   jhgf", "hegj   oellh   789"));
+		assertFalse(Strings.isAnagramm("      ", "     "));
+		assertFalse(Strings.isAnagramm("hello 987", "hello  987"));
 		
 	}
 }
