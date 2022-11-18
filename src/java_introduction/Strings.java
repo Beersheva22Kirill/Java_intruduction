@@ -8,7 +8,6 @@ public class Strings {
 	 * @return true if str anagramm of "anagramm"
 	 */
 	public static boolean isAnagramm(String str , String anagramm) {
-		//TODO
 		boolean res = true;
 		char[] arrayCharStr = str.toCharArray();
 		char[] arrayCharAnagramm = anagramm.toCharArray();
