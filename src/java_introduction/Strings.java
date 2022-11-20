@@ -4,23 +4,23 @@ public class Strings {
 	/**
 	 * 
 	 * @param str
-	 * @param anagramm
-	 * @return true if str anagramm of "anagramm"
+	 * @param anagram
+	 * @return true if str anagram of "anagram"
 	 */
-	public static boolean isAnagramm(String str , String anagramm) {
+	public static boolean isAnagram(String str , String anagram) {
 		boolean res = true;
 		char[] arrayCharStr = str.toCharArray();
-		char[] arrayCharAnagramm = anagramm.toCharArray();
+		char[] arrayCharAnagram = anagram.toCharArray();
 		int[] helper = new int [maxCharElement(arrayCharStr) + 1];
 		
-		if (arrayCharStr.length == arrayCharAnagramm.length) {
+		if (arrayCharStr.length == arrayCharAnagram.length) {
 			for (int i = 0; i < arrayCharStr.length; i++) {	
 				helper[arrayCharStr[i]] += 1; 			
 			}
-			for (int i = 0; i < arrayCharAnagramm.length; i++) {
+			for (int i = 0; i < arrayCharAnagram.length; i++) {
 				
-				if (helper[(int)arrayCharAnagramm[i]] > 0)  {
-					helper[(int)arrayCharAnagramm[i]]--;
+				if (helper[(int)arrayCharAnagram[i]] > 0)  {
+					helper[(int)arrayCharAnagram[i]]--;
 				} else {
 					res = false;
 				}
@@ -32,7 +32,11 @@ public class Strings {
 		return res;
 		
 	}
-	
+	/**
+	 * 
+	 * @param array
+	 * @return max number value of array character
+	 */
 	public static int maxCharElement (char array[]) {
 		int res = 0;
 		for (int i = 0; i < array.length; i++) {
@@ -42,5 +46,24 @@ public class Strings {
 		}		
 		return res;
 	}
-
+	
+	public static void sortStringNumbers (String[] arrayStr ) {
+		
+		int [] helper = new int [Byte.MAX_VALUE + (-Byte.MIN_VALUE) + 1];
+		for (int i = 0; i < arrayStr.length; i++) {
+			int index = (int) (Byte.parseByte(arrayStr[i]) + (-Byte.MIN_VALUE));
+				helper[index] += 1;				
+		}
+		int i = 0;
+		int indexForRes = 0;
+		while(i < helper.length) {
+			if (helper[i] != 0) {
+				for (int j = 0; j < helper[i]; j++) {
+					arrayStr[indexForRes] = Integer.toString(i - (-Byte.MIN_VALUE));
+					indexForRes ++;
+				}				
+			}			
+		i++;		
+		}		
+	}
 }
