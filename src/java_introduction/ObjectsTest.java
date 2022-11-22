@@ -75,4 +75,52 @@ public class ObjectsTest {
 		assertArrayEquals(new String[] { "-128", "-110", "-37", "0", "1", "1", "2", "2", "5", "5", "5", "15", "22", "118", "120", "127" }, array1);
 		assertArrayEquals(new String[] { "-110", "-37","2","5","15" ,"22","118","120"}, array2);
 	}
+	@Test
+	void javaVariebleTest() {
+		assertTrue("java".matches(Strings.javaNameExp()));
+		assertFalse("1java".matches(Strings.javaNameExp()));
+		assertFalse("_".matches(Strings.javaNameExp()));
+		assertTrue("__".matches(Strings.javaNameExp()));
+		assertTrue("java_1_2".matches(Strings.javaNameExp()));
+		assertTrue("$".matches(Strings.javaNameExp()));
+		assertFalse("$ _".matches(Strings.javaNameExp()));
+		
+	}
+	
+	@Test
+	void ipV4OctetTest(){
+		assertTrue("1".matches(Strings.ipV4Octet()));
+		assertTrue("10".matches(Strings.ipV4Octet()));
+		assertTrue("100".matches(Strings.ipV4Octet()));
+		assertTrue("255".matches(Strings.ipV4Octet()));
+		assertTrue("249".matches(Strings.ipV4Octet()));
+		
+		assertFalse("256".matches(Strings.ipV4Octet()));
+		assertFalse("265".matches(Strings.ipV4Octet()));
+		assertFalse("-1".matches(Strings.ipV4Octet()));
+		assertFalse("2561".matches(Strings.ipV4Octet()));
+	}
+	
+	@Test
+	void ipV4Test(){
+		assertTrue("255.255.255.255".matches(Strings.ipV4()));
+		assertTrue("1.0.0.0".matches(Strings.ipV4()));
+		assertTrue("0.0.0.0".matches(Strings.ipV4()));
+		assertTrue("1.1.1.1".matches(Strings.ipV4()));
+		assertTrue("001.001.001.249".matches(Strings.ipV4()));
+		assertTrue("001.001.001.245".matches(Strings.ipV4()));
+		assertTrue("192.168.1.245".matches(Strings.ipV4()));
+		
+		assertFalse("1.1.1.265".matches(Strings.ipV4()));
+		assertFalse("265.1.1.1".matches(Strings.ipV4()));
+		assertFalse("192.168.1.256".matches(Strings.ipV4()));
+		assertFalse("123.123.256.111".matches(Strings.ipV4()));
+		assertFalse("123.256.123.111.".matches(Strings.ipV4()));
+		assertFalse("256.123.123.111.".matches(Strings.ipV4()));
+		assertFalse("123123.256.111".matches(Strings.ipV4()));
+		assertFalse("123.123256.111".matches(Strings.ipV4()));
+		assertFalse("123.123.256111".matches(Strings.ipV4()));
+		
+		
+	}
 }

@@ -5,7 +5,7 @@ public class Strings {
 	 * 
 	 * @param str
 	 * @param anagram
-	 * @return true if str anagram of "anagram"
+	 * @return true if "str" anagram of "anagram"
 	 */
 	public static boolean isAnagram(String str , String anagram) {
 		boolean res = true;
@@ -59,11 +59,28 @@ public class Strings {
 		while(i < helper.length) {
 			if (helper[i] != 0) {
 				for (int j = 0; j < helper[i]; j++) {
-					arrayStr[indexForRes] = Integer.toString(i - (-Byte.MIN_VALUE));
-					indexForRes ++;
+					arrayStr[indexForRes ++] = Integer.toString(i - (-Byte.MIN_VALUE));
 				}				
 			}			
 		i++;		
 		}		
 	}
+	
+	public static String javaNameExp() {
+		return "[a-zA-Z$][\\w$]*|_[\\w$]+";
+	}
+	
+	public static String ipV4Octet() {
+
+		return "^([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])$";
+	}
+	
+	public static String ipV4() {
+		String begin = ipV4Octet().replaceAll("[\\$]", "");
+		String end = ipV4Octet().replaceAll("[\\^]", "");
+		String middle = ipV4Octet().replaceAll("[\\^\\$]", "");
+		
+		return begin + "\\." + middle + "\\." + middle + "\\." + end;
+	}
+	
 }
