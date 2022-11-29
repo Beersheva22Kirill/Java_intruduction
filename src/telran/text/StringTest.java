@@ -129,6 +129,7 @@ class StringTest {
 		assertEquals(10.5, computeArithmeticExpression("2 + 2 + 1 * 2 + 0.5", null, null));
 		assertEquals(10.5, computeArithmeticExpression("(2 + 2 + 1) * 2 + 0.5", null, null));
 		assertEquals(10.5, computeArithmeticExpression("(2) + (2) + 1 * 2 + 0.5", null, null));
+		assertTrue(Double.isNaN(computeArithmeticExpression("(2 + 2)) + (10", null, null)));
 		assertTrue(Double.isNaN(computeArithmeticExpression("2 +( 2 + 10", null, null)));
 		assertTrue(Double.isNaN(computeArithmeticExpression("2 +( 2 +) 10", null, null)));
 		assertTrue(Double.isNaN(computeArithmeticExpression("2 # 2 ++ 10", null, null)));

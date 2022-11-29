@@ -186,11 +186,15 @@ public class Strings {
 	public static boolean checkBraces(String expression) {
 		int counter = 0;
 		char[] array = expression.toCharArray();
+	
 		for (int i = 0; i < array.length; i++) {
 			switch(array[i]) {
 			case '(' : counter++; break;
 			case ')' : counter--; break;
 			}
+			if (counter < 0) {
+				break;
+				}
 		}		
 		return counter == 0 ? true : false;
 	}
