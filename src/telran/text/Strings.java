@@ -94,17 +94,15 @@ public class Strings {
 	public static String arithmeticExpression() {
 		String operatorExp = operator();
 		String operandExp = operand();
-		String leftBrace = "(\\()*";
-		String rightBrace = "(\\))*";
 
-		return String.format("%3$s%1$s%4$s(%2$s%3$s%1$s%4$s)*", operandExp, operatorExp,leftBrace,rightBrace);
+		return String.format("%1$s(%2$s%1$s)*", operandExp, operatorExp);
 	}							
 	public static String operand() {
 
-		return "((\\d+\\.?\\d*|\\.\\d+)" + "|" + javaNameExp() + ")";
+		return String.format("(\\(*(%s|%s)\\)*)", javaNameExp(),numberExpression());
 	}
 	
-	public static String number() {
+	public static String numberExpression() {
 
 		return "(\\d+\\.?\\d*|\\.\\d+)";
 	}
@@ -131,6 +129,8 @@ public class Strings {
 		// 10 (* 2)
 		//10 * 2 (())
 		Double res = Double.NaN;
+		names = getUpdatedNames(names);
+		//values = getUpdatedValues(values,names);
 		if (isArithmeticExpression(expression) && checkBraces(expression)) {
 			expression = expression.replaceAll("[\\s()]+" , "");
 			String[] operands = expression.split(operator());
@@ -146,6 +146,21 @@ public class Strings {
 		return res;
 	}
 	
+	private static double[] getUpdatedValues(double[] values, String[] names) {
+		if (values == null ) {
+			values = new double[0];
+		}
+		if (values.length != names.length) {
+			//FIXME
+			values = Arrays.copyOf(values, names.length);
+		}
+		return null;
+	}
+	
+	private static String[] getUpdatedNames(String[] names) {
+		
+		return names == null ? new String[0] : names;
+	}
 	private static Double computeOperation(Double operand1, double operand2, String operatorStr) {
 		Double res = Double.NaN;
 		if (!Double.isNaN(operand2)) {
@@ -163,17 +178,16 @@ public class Strings {
 
 		String value = "";
 		String name = "";
-		int index = -1;
+		int index = Arrays.binarySearch(names, operand);
 		double operandValue = Double.NaN;
 		if (values != null && names != null) {
-			index = Arrays.binarySearch(names, operand);
 			
 			if (index > -1) {
 				operandValue = values[index];
-			} else if (operand.matches(number())) {
-				operandValue = Double.parseDouble(operand);
+			} else if (operand.matches(numberExpression())) {
+				operandValue = Double.valueOf(operand);
 			} 
-		} else if (operand.matches(number())) {
+		} else if (operand.matches(numberExpression())) {
 			operandValue = Double.parseDouble(operand);
 		}				
 		return operandValue;
@@ -186,16 +200,16 @@ public class Strings {
 	public static boolean checkBraces(String expression) {
 		int counter = 0;
 		char[] array = expression.toCharArray();
-	
-		for (int i = 0; i < array.length; i++) {
-			switch(array[i]) {
+		int index = 0;
+		int lenght = expression.length();
+		
+	while (index < lenght && counter > -1 ) {
+		switch(array[index]) {
 			case '(' : counter++; break;
 			case ')' : counter--; break;
 			}
-			if (counter < 0) {
-				break;
-				}
-		}		
+		index++;
+	}		
 		return counter == 0 ? true : false;
 	}
 	
