@@ -7,8 +7,9 @@ public class DigitalNumbersPrinting {
 	public static void displayDigitalNumder(int number, int offset, int width, int height) {
 		int[] array = getDigits(number);
 		String[] res = new String[height];
+		String[] strArrForConcat = new String [height];
 		for (int i = 0; i < array.length; i++) {
-			String[] strArrForConcat = getSymbolDigit(array[i], offset, width, height);
+			strArrForConcat = getSymbolDigit(array[i], offset, width, height);
 			for (int j = 0; j < res.length; j++) {
 				res[j] = concatenationString(res[j], strArrForConcat[j]);
 			}
